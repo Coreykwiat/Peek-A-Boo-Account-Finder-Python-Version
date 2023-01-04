@@ -11,3 +11,5 @@ Please use this for legal purposes only.
 use "pip install requirements.txt" in the directory to install required modules
 
 use "python main.py" to start the program
+
+![image](https://user-images.githubusercontent.com/121850504/210509627-f2d50dac-1090-4a53-a84d-6f4f89ca1d27.png)
