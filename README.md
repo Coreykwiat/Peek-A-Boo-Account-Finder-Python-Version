@@ -9,3 +9,5 @@ Currently supports: Pinterest, TikTok, Facebook, Instagram, LinkedIn, Twitter, a
 Please use this for legal purposes only.
 
 use "pip install requirements.txt" in the directory to install required modules
+
+use "python main.py" to start the program
