@@ -1,0 +1,2 @@
+selenium~=4.7.2
+webdrivermanager~=0.10.0
