@@ -5,3 +5,5 @@ Peek-A-Boo uses Selenium to exploit the "forgot password" feature on websites to
 Currently supports: Pinterest, TikTok, Facebook, Instagram, LinkedIn, Twitter, and Snapchat
 
 Please use this for legal purposes only.
+
+use "pip install requirements.txt" in the directory to install required modules
