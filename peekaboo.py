@@ -13,6 +13,7 @@ from selenium.common.exceptions import NoSuchElementException
 
 username = main.username
 pin = main.pin
+skip2 = main.skip2
 
 chrome_options = Options()
 chrome_options.add_argument("--headless")
@@ -81,8 +82,9 @@ with open('output.txt', 'w') as file:
 
 
 def snapchat():
-    if skip2 == 'yes' or 'Yes' or 'YES' or 'y' or 'Y':
+    if skip2 == 'yes':
         data[5] = 'Snapchat Skipped\n'
+        return
 
     else:
         driver.get("https://accounts.snapchat.com/accounts/password_reset_request")
@@ -217,5 +219,8 @@ pinterest()
 
 with open('output.txt', 'w') as file:
     file.writelines(data)
+
+
+
 
 
