@@ -6,6 +6,7 @@ from selenium.webdriver.chrome.options import Options
 import main
 from main import data
 from main import pin
+from main import skip2
 import time
 from selenium.common.exceptions import NoSuchElementException
 
@@ -28,6 +29,9 @@ def read_output():
 
 data[0] = username + ' \n'
 data[1] = ' \n'
+with open('output.txt', 'w') as file:
+    file.writelines(data)
+
 
 def facebook():
     driver.get("https://www.facebook.com/login/identify/?ctx=recover&ars=facebook_login&from_login_screen=0")
@@ -43,6 +47,9 @@ def facebook():
             data[3] = 'Facebook Account found\n'
 
 facebook()
+with open('output.txt', 'w') as file:
+    file.writelines(data)
+
 
 def instagram():
     driver.get("https://www.instagram.com/accounts/password/reset/")
@@ -69,35 +76,47 @@ def instagram():
         with open('output.txt', 'w') as f:
             data[4] = 'Instagram Account Found\n'
 instagram()
+with open('output.txt', 'w') as file:
+    file.writelines(data)
+
 
 def snapchat():
-    driver.get("https://accounts.snapchat.com/accounts/password_reset_request")
-    driver.find_element("class name", "form-control").send_keys(username)
-    time.sleep(5)
-    driver.find_element("class name", "primary_action").click()
-    time.sleep(2.5)
+    if skip2 == 'yes' or 'Yes' or 'YES' or 'y' or 'Y':
+        data[5] = 'Snapchat Skipped\n'
 
-    errorsmsg = 'not url'
-    errors_message = "Email address is invalid."
-    time.sleep(1)
-    try:
-        if driver.find_element("id", "error_message"):
-            errorsmsg = driver.find_element("id", "error_message")
+    else:
+        driver.get("https://accounts.snapchat.com/accounts/password_reset_request")
+        driver.find_element("class name", "form-control").send_keys(username)
+        time.sleep(5)
+        driver.find_element("class name", "primary_action").click()
+        time.sleep(2.5)
+
+        errorsmsg = 'not url'
+        errors_message = "Email address is invalid."
+        time.sleep(1)
+        try:
+            if driver.find_element("id", "error_message"):
+                errorsmsg = driver.find_element("id", "error_message")
+                pass
+
+            else:
+                with open('output.txt', 'w') as f:
+                    data[5] = 'Account Found\n'
+        except:
             pass
-        else:
-            with open('output.txt', 'w') as f:
-                data[5] = 'Account Found\n'
-    except:
-        pass
-    try:
-        if errorsmsg.text == errors_message:
-            with open('output.txt', 'w') as f:
-                data[5] = 'Snapchat Account not Found\n'
-    except:
-        with open('output.txt', 'w') as f:
+        try:
+         if errorsmsg.text == errors_message:
+             with open('output.txt', 'w') as f:
+                 data[5] = 'Snapchat Account not Found\n'
+        except:
+         with open('output.txt', 'w') as f:
             data[5] = 'Snapchat Account Found\n'
 
 snapchat()
+with open('output.txt', 'w') as file:
+    file.writelines(data)
+
+
 
 
 def LinkedIn():
@@ -115,6 +134,9 @@ def LinkedIn():
             data[6] = 'LinkedIn Account Found\n'
 
 LinkedIn()
+with open('output.txt', 'w') as file:
+    file.writelines(data)
+
 
 def TikTok():
     driver.get("https://www.tiktok.com/login/email/forget-password")
@@ -140,6 +162,9 @@ def TikTok():
         with open('output.txt', 'w') as f:
             data[7] = 'Error Finding TikTok\n'
 TikTok()
+with open('output.txt', 'w') as file:
+    file.writelines(data)
+
 
 def twitter():
     driver.get("https://twitter.com/i/flow/password_reset?input_flow_data=%7B%22requested_variant%22%3A%22eyJwbGF0Zm9ybSI6IlJ3ZWIifQ%3D%3D%22%7D")
@@ -159,6 +184,10 @@ def twitter():
 
 
 twitter()
+
+with open('output.txt', 'w') as file:
+    file.writelines(data)
+
 
 def pinterest():
     if pin == 'none':

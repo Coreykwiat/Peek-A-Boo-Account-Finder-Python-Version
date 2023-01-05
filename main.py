@@ -9,6 +9,7 @@ from selenium.common.exceptions import NoSuchElementException
 # Define the global variable
 username = ""
 pin = ""
+skip2 = ""
 chrome_options = Options()
 chrome_options.add_argument("--headless")
 chrome_options.add_argument("--silent")
@@ -24,8 +25,10 @@ def button_color():
 def run_script():
     global username
     global pin
+    global skip2
     username = entry.get()
     pin = pinentry.get()
+    skip2 =skipentry.get()
     with open("peekaboo.py", "r") as f:
         script = f.read()
     exec(script)
@@ -55,6 +58,12 @@ pin_label.pack()
 
 pinentry = tk.Entry(frame, width=50)
 pinentry.pack()
+
+skip_label = tk.Label(frame, text="Skip ones that are known to send reset codes?")
+skip_label.pack()
+
+skipentry = tk.Entry(frame, width=50)
+skipentry.pack()
 
 button = tk.Button(frame,
                    text="Found You",
