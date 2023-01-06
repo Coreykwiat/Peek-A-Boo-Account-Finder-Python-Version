@@ -144,7 +144,7 @@ def LinkedIn():
                     data[6] = 'LinkedIn Account Found\n'
     except:
         with open('output.txt', 'w') as f:
-            data[6] = 'No LinkedIn Account Found\n'
+            data[6] = 'LinkedIn Account Not Found\n'
 LinkedIn()
 with open('output.txt', 'w') as file:
     file.writelines(data)
@@ -189,8 +189,7 @@ def twitter():
     driver.find_element("name", "email").send_keys(username)
     time.sleep(2)
     try:
-        click2 = driver.find_element("xpath", "//*[contains(text(), 'This username is already in use.')]")
-        if click2.text == 'This username is already in use.':
+        if driver.find_element("xpath", "/html/body/div/div/div/div[1]/div[2]/div/div/div/div/div/div[2]/div[2]/div/div/div[2]/div[2]/div[1]/div/div[2]/div[2]/div/div/div/div/span"):
             data[8] = 'Twitter Account Found\n'
         else:
             data[8] = 'No Twitter Account Found\n'
@@ -235,8 +234,8 @@ with open('output.txt', 'w') as file:
     file.writelines(data)
 
 def roblox():
-    if pin == 'none:':
-        data[10] == 'Roblox Skipped\n'
+    if pin == 'none':
+        data[10] = 'Roblox Skipped\n'
     else:
         global month
         global day
@@ -255,7 +254,7 @@ def roblox():
             else:
                 data[10]= 'No Roblox Account Found\n'
         except:
-            data[10] = 'Roblox Account Found\n'
+            data[10] = 'Roblox Not Account Found\n'
 
 roblox()
 with open('output.txt', 'w') as file:
