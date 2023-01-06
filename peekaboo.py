@@ -47,10 +47,10 @@ def facebook():
     geturl = driver.current_url
     if geturl == ("https://www.facebook.com/login/identify/?ctx=recover&ars=facebook_login&from_login_screen=0"):
         with open('output.txt', 'w') as f:
-            data[3] = 'Facebook Account Not Found\n'
+            data[3] = '- Facebook Account Not Found\n'
     else:
         with open('output.txt', 'w') as f:
-            data[3] = 'Facebook Account Found\n'
+            data[3] = '+ Facebook Account Found\n'
 
 facebook()
 with open('output.txt', 'w') as file:
@@ -65,7 +65,7 @@ def instagram():
         driver.find_element("xpath", '//button[text()="Send login link"]').click()
     except:
         with open('output.txt', 'w') as f:
-            data[4] = 'Error with Instagram\n'
+            data[4] = '- Error with Instagram\n'
         return
     time.sleep(2)
     geturl = driver.current_url
@@ -74,13 +74,13 @@ def instagram():
         try:
             driver.find_element("xpath", '//button[text()="OK"]').click()
             with open('output.txt', 'w') as f:
-                data[4] = 'Instagram Account found\n'
+                data[4] = '+ Instagram Account found\n'
         except NoSuchElementException:
             with open('output.txt', 'w') as f:
-                data[4] = 'Instagram Account Not Found\n'
+                data[4] = '- Instagram Account Not Found\n'
     else:
         with open('output.txt', 'w') as f:
-            data[4] = 'Instagram Account Found\n'
+            data[4] = '+ Instagram Account Found\n'
 instagram()
 with open('output.txt', 'w') as file:
     file.writelines(data)
@@ -88,7 +88,7 @@ with open('output.txt', 'w') as file:
 
 def snapchat():
     if skip2 == 'yes':
-        data[5] = 'Snapchat Skipped\n'
+        data[5] = '- Snapchat Skipped\n'
         return
 
     else:
@@ -108,16 +108,16 @@ def snapchat():
 
             else:
                 with open('output.txt', 'w') as f:
-                    data[5] = 'Account Found\n'
+                    data[5] = ' + Snapchat Account Found\n'
         except:
             pass
         try:
          if errorsmsg.text == errors_message:
              with open('output.txt', 'w') as f:
-                 data[5] = 'Snapchat Account not Found\n'
+                 data[5] = '- Snapchat Account not Found\n'
         except:
          with open('output.txt', 'w') as f:
-            data[5] = 'Snapchat Account Found\n'
+            data[5] = '+ Snapchat Account Found\n'
 
 snapchat()
 with open('output.txt', 'w') as file:
@@ -134,17 +134,17 @@ def LinkedIn():
     geturl = driver.current_url
     try:
         if driver.find_element("xpath", "/html/body/div/div/div[1]"):
-            data[6] = 'LinkedIn Not Found Due To Captcha\n'
+            data[6] = '- LinkedIn Not Found Due To Captcha\n'
         else:
             if geturl == ("https://www.linkedin.com/uas/request-password-reset?trk=homepage-basic_signin-form_forgot-password-link"):
                 with open('output.txt', 'w') as f:
-                    data[6] = 'LinkedIn Account Not Found\n'
+                    data[6] = '- LinkedIn Account Not Found\n'
             else:
                 with open('output.txt', 'w') as f:
-                    data[6] = 'LinkedIn Account Found\n'
+                    data[6] = '+ LinkedIn Account Found\n'
     except:
         with open('output.txt', 'w') as f:
-            data[6] = 'LinkedIn Account Not Found\n'
+            data[6] = '- LinkedIn Account Not Found\n'
 LinkedIn()
 with open('output.txt', 'w') as file:
     file.writelines(data)
@@ -162,17 +162,17 @@ def TikTok():
             text2 = "Email address isn't registered yet"
             if text == text2:
                 with open('output.txt', 'w') as f:
-                    data[7] = 'No TikTok Account not found\n'
+                    data[7] = '- TikTok Account not found\n'
             else:
                 with open('output.txt', 'w') as f:
-                    data[7] = 'TikTok Account Found\n'
+                    data[7] = '+ TikTok Account Found\n'
         except:
             with open('output.txt', 'w') as f:
-                data[7] = 'Potential TikTok Account Found\n'
+                data[7] = '= Potential TikTok Account Found\n'
 
     except:
         with open('output.txt', 'w') as f:
-            data[7] = 'Error Finding TikTok\n'
+            data[7] = '- Error Finding TikTok\n'
 TikTok()
 with open('output.txt', 'w') as file:
     file.writelines(data)
@@ -190,12 +190,12 @@ def twitter():
     time.sleep(2)
     try:
         if driver.find_element("xpath", "/html/body/div/div/div/div[1]/div[2]/div/div/div/div/div/div[2]/div[2]/div/div/div[2]/div[2]/div[1]/div/div[2]/div[2]/div/div/div/div/span"):
-            data[8] = 'Twitter Account Found\n'
+            data[8] = '+ Twitter Account Found\n'
         else:
-            data[8] = 'No Twitter Account Found\n'
+            data[8] = '- Twitter Account Not Found\n'
 
     except:
-        data[8] = 'No Twitter Account Found\n'
+        data[8] = '- Twitter Account Not Found\n'
 
 
 twitter()
@@ -206,7 +206,7 @@ with open('output.txt', 'w') as file:
 
 def pinterest():
     if pin == 'none':
-        data[9] = 'Pinterest Skipped\n'
+        data[9] = '- Pinterest Skipped\n'
         return
     else:
         driver.get("https://www.pinterest.com/password/reset/")
@@ -217,16 +217,16 @@ def pinterest():
             driver.find_element("xpath", "/html/body/div[1]/div/div[1]/div/div/div[2]/div/div/div/div/form/div[2]/div[2]/button").click()
             time.sleep(2)
         except:
-            data[9] = 'Error with Pinterest\n'
+            data[9] = '- Error with Pinterest\n'
 
         try:
             if driver.find_element("xpath", "/html/body/div[1]/div/div[1]/div/div/div[2]/div/div/div/div/form/div[3]"):
-              data[9] = 'Potential Pinterest Account Found\n'
+              data[9] = '= Potential Pinterest Account Found\n'
             else:
-              data[9] = 'No Pinterest Account Found\n'
+              data[9] = '- Pinterest Account Not Found\n'
 
         except:
-            data[9] = 'No Pinterest Account Found\n'
+            data[9] = '- Pinterest Account Not Found\n'
 
 pinterest()
 
@@ -235,7 +235,7 @@ with open('output.txt', 'w') as file:
 
 def roblox():
     if pin == 'none':
-        data[10] = 'Roblox Skipped\n'
+        data[10] = '- Roblox Skipped\n'
     else:
         global month
         global day
@@ -250,11 +250,11 @@ def roblox():
             text2 = driver.find_element("xpath", "//*[contains(text(), 'This username is already in use.')]")
             if text2.text == 'This username is already in use.':
                 if text2.text == 'This username is already in use.':
-                    data[10] = 'Roblox Account Found\n'
+                    data[10] = '+ Roblox Account Found\n'
             else:
-                data[10]= 'No Roblox Account Found\n'
+                data[10]= '- Roblox Account Not Found\n'
         except:
-            data[10] = 'Roblox Not Account Found\n'
+            data[10] = '- Roblox Not Account Found\n'
 
 roblox()
 with open('output.txt', 'w') as file:
@@ -262,7 +262,7 @@ with open('output.txt', 'w') as file:
 
 def vsco():
     if skip2 == 'yes':
-        data[11] = 'VSCO Skipped\n'
+        data[11] = '- VSCO Skipped\n'
     else:
         driver.get("https://vsco.co/user/forgotpassword")
         driver.find_element("id", "email").send_keys(username)
@@ -271,11 +271,11 @@ def vsco():
         try:
             geturl2 = driver.current_url
             if geturl2 == 'https://vsco.co/user/forgotpassword':
-                data[11] = 'VSCO Not Found\n'
+                data[11] = '- VSCO Account Not Found\n'
             else:
-                data[11] = 'VSCO Found\n'
+                data[11] = '- VSCO Account Found\n'
         except:
-            data[11] = 'VSCO Error\n'
+            data[11] = '- VSCO Error\n'
 
 
 vsco()
