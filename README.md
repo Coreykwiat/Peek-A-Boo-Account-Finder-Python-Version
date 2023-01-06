@@ -1,7 +1,6 @@
 
-![peekaboo](https://user-images.githubusercontent.com/121850504/210921782-c94394ec-1b19-430b-8b96-1c4a86587185.png)
 
-# Peek-A-Boo-Python-Version
+#![peekaboo](https://user-images.githubusercontent.com/121850504/210921782-c94394ec-1b19-430b-8b96-1c4a86587185.png)-Python-Version
 
 Peek-A-Boo uses Selenium to exploit the "forgot password" feature on websites to find out if the email has any accounts linked to it
 
