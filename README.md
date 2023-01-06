@@ -1,4 +1,5 @@
-![image](https://user-images.githubusercontent.com/121850504/210501751-ef8bdf3f-de72-4fb8-9861-12870365ce03.png)
+
+![peekaboo](https://user-images.githubusercontent.com/121850504/210921782-c94394ec-1b19-430b-8b96-1c4a86587185.png)
 
 # Peek-A-Boo-Python-Version
 
@@ -13,3 +14,4 @@ use "pip install requirements.txt" in the directory to install required modules
 use "python main.py" to start the program
 
 ![image](https://user-images.githubusercontent.com/121850504/210920403-d099ac4a-1ba3-4a5c-ace9-213ebeb95b5d.png)
+
