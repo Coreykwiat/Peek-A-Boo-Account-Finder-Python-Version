@@ -14,6 +14,7 @@ from selenium.common.exceptions import NoSuchElementException
 username = main.username
 pin = main.pin
 skip2 = main.skip2
+geturl2 = ""
 text2 = ""
 month = 'june'
 day = '10'
@@ -253,6 +254,28 @@ def roblox():
             data[10] = 'Roblox Account Found\n'
 
 roblox()
+with open('output.txt', 'w') as file:
+    file.writelines(data)
+
+def vsco():
+    if skip2 == 'yes':
+        data[11] = 'VSCO SKIPPED\n'
+    else:
+        driver.get("https://vsco.co/user/forgotpassword")
+        driver.find_element("id", "email").send_keys(username)
+        driver.find_element("id", 'forgotPasswordBtn').click()
+        time.sleep(1)
+        try:
+            geturl2 = driver.current_url
+            if geturl2 == 'https://vsco.co/user/forgotpassword':
+                data[11] = 'VSCO Not Found\n'
+            else:
+                data[11] = 'VSCO Found\n'
+        except:
+            data[11] = 'VSCO Error\n'
+
+
+vsco()
 with open('output.txt', 'w') as file:
     file.writelines(data)
 

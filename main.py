@@ -38,15 +38,13 @@ def run_script():
 
 
 root = tk.Tk()
-root.geometry("1280x400")
+root.geometry("1280x500")
 root.wm_title("Peek-A-Boo")
 root.wm_iconbitmap('iseeyou.ico')
 
 frame = tk.Frame(root)
 frame.pack(pady=100)
 
-label = tk.Label(frame, text="Peek-A-Boo", font=("Arial",24))
-label.pack()
 
 entry_label = tk.Label(frame, text="Enter an email to search for.")
 entry_label.pack()
@@ -71,6 +69,10 @@ button = tk.Button(frame,
                    command=button_color,)
 button.pack(side=tk.RIGHT, padx=150)
 
+image = tk.PhotoImage(file='peekaboo.png')
+
+label = tk.Label(root, image=image)
+label.pack(side='top')
 
 disclaimer_label = tk.Label(root, text="DISCLAIMER: THIS TOOL IS FOR LEGAL PURPOSES ONLY AND WHEN THE TOOL IS USED IT WILL ALERT WHOEVER YOU'RE INVESTIGATING AS IT SEND PASSWORD RESET CODES",
                             font=("Arial", 10),
