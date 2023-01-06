@@ -12,4 +12,4 @@ use "pip install requirements.txt" in the directory to install required modules
 
 use "python main.py" to start the program
 
-![image](https://user-images.githubusercontent.com/121850504/210906966-a11b3a37-209a-4778-87cb-40f05cb918fe.png)
+![image](https://user-images.githubusercontent.com/121850504/210920403-d099ac4a-1ba3-4a5c-ace9-213ebeb95b5d.png)
