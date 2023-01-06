@@ -1,4 +1,5 @@
-![peekaboo](https://user-images.githubusercontent.com/121850504/210921782-c94394ec-1b19-430b-8b96-1c4a86587185.png)                                                      ![eye-blink (1)](https://user-images.githubusercontent.com/121850504/210953059-6b120f82-0cf8-4921-9d1a-1d5d166b64ec.gif)
+![peekaboo](https://user-images.githubusercontent.com/121850504/210921782-c94394ec-1b19-430b-8b96-1c4a86587185.png)![image](https://user-images.githubusercontent.com/121850504/210953273-a1baac9a-89a3-49d1-92f6-b74e0f328128.png)
+                                              ![eye-blink (1)](https://user-images.githubusercontent.com/121850504/210953059-6b120f82-0cf8-4921-9d1a-1d5d166b64ec.gif)
 
 
 # Peek-A-Boo-Python-Version
