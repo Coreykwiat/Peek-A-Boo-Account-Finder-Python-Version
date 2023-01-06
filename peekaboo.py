@@ -170,7 +170,7 @@ def TikTok():
             with open('output.txt', 'w') as f:
                 data[7] = 'Potential TikTok Account Found\n'
 
-    except NoSuchElementException:
+    except:
         with open('output.txt', 'w') as f:
             data[7] = 'Error Finding TikTok\n'
 TikTok()
@@ -179,20 +179,24 @@ with open('output.txt', 'w') as file:
 
 
 def twitter():
-    driver.get("https://twitter.com/i/flow/password_reset?input_flow_data=%7B%22requested_variant%22%3A%22eyJwbGF0Zm9ybSI6IlJ3ZWIifQ%3D%3D%22%7D")
-    time.sleep(5)
-    driver.find_element("name", "username").send_keys(username)
+    driver.get("https://twitter.com/i/flow/signup")
     time.sleep(2)
-    driver.find_element("xpath","/html/body/div/div/div/div[1]/div[2]/div/div/div/div/div/div[2]/div[2]/div/div/div[2]/div[2]/div[2]/div/div/div/div/div/span/span").click()
+    driver.find_element("xpath",
+                        "/html/body/div/div/div/div[1]/div[2]/div/div/div/div/div/div[2]/div[2]/div/div/div[2]/div[2]/div/div/div/div[5]/div/span/span").click()
+    time.sleep(2)
+    driver.find_element("xpath",
+                        "/html/body/div/div/div/div[1]/div[2]/div/div/div/div/div/div[2]/div[2]/div/div/div[2]/div[2]/div[1]/div/div[2]/div[3]/span").click()
+    driver.find_element("name", "email").send_keys(username)
     time.sleep(2)
     try:
-        if driver.find_element("xpath","/html/body/div/div/div/div[1]/div[2]/div/div/div/div/div/div[2]/div[2]/div/div/div[2]/div[2]/div[2]/div/div/div/div/div/span/span").click():
-            data[8] = 'No Twitter Account Found\n'
-        else:
+        click2 = driver.find_element("xpath", "//*[contains(text(), 'This username is already in use.')]")
+        if click2.text == 'This username is already in use.':
             data[8] = 'Twitter Account Found\n'
+        else:
+            data[8] = 'No Twitter Account Found\n'
 
     except:
-        data[8] = 'Twitter Account Found\n'
+        data[8] = 'No Twitter Account Found\n'
 
 
 twitter()
