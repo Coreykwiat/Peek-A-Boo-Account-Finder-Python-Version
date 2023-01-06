@@ -1,4 +1,5 @@
-![peekaboo](https://user-images.githubusercontent.com/121850504/210921782-c94394ec-1b19-430b-8b96-1c4a86587185.png) ![eye-blink](https://user-images.githubusercontent.com/121850504/210952703-37c479c9-fcc0-4826-bc55-f2bc468521eb.gif)
+![peekaboo](https://user-images.githubusercontent.com/121850504/210921782-c94394ec-1b19-430b-8b96-1c4a86587185.png) ![eye-blink (1)](https://user-images.githubusercontent.com/121850504/210953059-6b120f82-0cf8-4921-9d1a-1d5d166b64ec.gif)
+
 
 # Peek-A-Boo-Python-Version
 
