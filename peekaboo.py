@@ -47,10 +47,10 @@ def facebook():
     geturl = driver.current_url
     if geturl == ("https://www.facebook.com/login/identify/?ctx=recover&ars=facebook_login&from_login_screen=0"):
         with open('output.txt', 'w') as f:
-            data[3] = 'Facebook Account not found\n'
+            data[3] = 'Facebook Account Not Found\n'
     else:
         with open('output.txt', 'w') as f:
-            data[3] = 'Facebook Account found\n'
+            data[3] = 'Facebook Account Found\n'
 
 facebook()
 with open('output.txt', 'w') as file:
@@ -259,7 +259,7 @@ with open('output.txt', 'w') as file:
 
 def vsco():
     if skip2 == 'yes':
-        data[11] = 'VSCO SKIPPED\n'
+        data[11] = 'VSCO Skipped\n'
     else:
         driver.get("https://vsco.co/user/forgotpassword")
         driver.find_element("id", "email").send_keys(username)
