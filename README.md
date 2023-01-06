@@ -18,4 +18,3 @@ use "python main.py" to start the program
 
 
 
-Created by Corey Kwiatkowski 2023
