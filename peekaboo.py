@@ -14,6 +14,10 @@ from selenium.common.exceptions import NoSuchElementException
 username = main.username
 pin = main.pin
 skip2 = main.skip2
+text2 = ""
+month = 'june'
+day = '10'
+year = '1990'
 
 chrome_options = Options()
 chrome_options.add_argument("--headless")
@@ -152,15 +156,15 @@ def TikTok():
         driver.find_element("xpath", '/html/body/div[2]/div/div[2]/div/form/div[3]/div/button').click()
         time.sleep(4)
         try:
-            element = driver.find_element("xpath","//*[@type='text' and contains(text(), 'Email address isn't registered yet')]")
+            element = driver.find_element("xpath","/html/body/div[2]/div/div[2]/div/form/div[2]/div[2]")
             text = element.text
             text2 = "Email address isn't registered yet"
             if text == text2:
                 with open('output.txt', 'w') as f:
-                    data[7] = 'Account not found\n'
+                    data[7] = 'No TikTok Account not found\n'
             else:
                 with open('output.txt', 'w') as f:
-                    data[7] = 'Account Found\n'
+                    data[7] = 'TikTok Account Found\n'
         except:
             with open('output.txt', 'w') as f:
                 data[7] = 'Potential TikTok Account Found\n'
@@ -198,7 +202,7 @@ with open('output.txt', 'w') as file:
 
 def pinterest():
     if pin == 'none':
-        data[9] = 'Pinterest Skipped'
+        data[9] = 'Pinterest Skipped\n'
         return
     else:
         driver.get("https://www.pinterest.com/password/reset/")
@@ -209,21 +213,49 @@ def pinterest():
             driver.find_element("xpath", "/html/body/div[1]/div/div[1]/div/div/div[2]/div/div/div/div/form/div[2]/div[2]/button").click()
             time.sleep(2)
         except:
-            data[9] = 'Error with Pinterest'
+            data[9] = 'Error with Pinterest\n'
 
         try:
             if driver.find_element("xpath", "/html/body/div[1]/div/div[1]/div/div/div[2]/div/div/div/div/form/div[3]"):
-              data[9] = 'Potential Pinterest Account Found'
+              data[9] = 'Potential Pinterest Account Found\n'
             else:
-              data[9] = 'No Pinterest Account Found'
+              data[9] = 'No Pinterest Account Found\n'
 
         except:
-            data[9] = 'No Pinterest Account Found'
+            data[9] = 'No Pinterest Account Found\n'
 
 pinterest()
 
 with open('output.txt', 'w') as file:
     file.writelines(data)
+
+def roblox():
+    if pin == 'none:':
+        data[10] == 'Roblox Skipped\n'
+    else:
+        global month
+        global day
+        global year
+        driver.get("https://www.roblox.com/")
+        driver.find_element("id", "MonthDropdown").send_keys(month)
+        driver.find_element("id", "DayDropdown").send_keys(day)
+        driver.find_element("id", "YearDropdown").send_keys(year)
+        driver.find_element("id", "signup-username").send_keys(pin)
+        time.sleep(1)
+        try:
+            text2 = driver.find_element("xpath", "//*[contains(text(), 'This username is already in use.')]")
+            if text2.text == 'This username is already in use.':
+                if text2.text == 'This username is already in use.':
+                    data[10] = 'Roblox Account Found\n'
+            else:
+                data[10]= 'No Roblox Account Found\n'
+        except:
+            data[10] = 'Roblox Account Found\n'
+
+roblox()
+with open('output.txt', 'w') as file:
+    file.writelines(data)
+
 
 
 

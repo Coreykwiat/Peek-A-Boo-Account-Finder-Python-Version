@@ -48,12 +48,12 @@ frame.pack(pady=100)
 label = tk.Label(frame, text="Peek-A-Boo", font=("Arial",24))
 label.pack()
 
-entry_label = tk.Label(frame, text="Enter an email to search for. (will recognize usernames and phone numbers but not all sites will)")
+entry_label = tk.Label(frame, text="Enter an email to search for.")
 entry_label.pack()
 entry = tk.Entry(frame, width=50)
 entry.pack()
 
-pin_label = tk.Label(frame, text="Enter a potential username for pinterest (put none for none):")
+pin_label = tk.Label(frame, text="Enter a username to try for username based sites (put none for none):")
 pin_label.pack()
 
 pinentry = tk.Entry(frame, width=50)
@@ -69,7 +69,7 @@ button = tk.Button(frame,
                    text="Found You",
                    fg="black",
                    command=button_color,)
-button.pack(side=tk.RIGHT, padx=112)
+button.pack(side=tk.RIGHT, padx=150)
 
 
 disclaimer_label = tk.Label(root, text="DISCLAIMER: THIS TOOL IS FOR LEGAL PURPOSES ONLY AND WHEN THE TOOL IS USED IT WILL ALERT WHOEVER YOU'RE INVESTIGATING AS IT SEND PASSWORD RESET CODES",
