@@ -19,6 +19,7 @@ text2 = ""
 month = 'june'
 day = '10'
 year = '1990'
+password = "fakepassword"
 
 chrome_options = Options()
 chrome_options.add_argument("--headless")
@@ -127,24 +128,25 @@ with open('output.txt', 'w') as file:
 
 
 def LinkedIn():
-    driver.get("https://www.linkedin.com/uas/request-password-reset?trk=homepage-basic_signin-form_forgot-password-link")
+    global password
+    driver.get("https://www.linkedin.com/login")
+    time.sleep(2)
     driver.find_element("id", "username").send_keys(username)
-    driver.find_element("id", "reset-password-submit-button").click()
-    time.sleep(2.5)
-    geturl = driver.current_url
+    driver.find_element("id", "password").send_keys(password)
+    time.sleep(1)
+    driver.find_element("xpath", "/html/body/div/main/div[2]/div[1]/form/div[3]/button").click()
+    time.sleep(2)
     try:
-        if driver.find_element("xpath", "/html/body/div/div/div[1]"):
-            data[6] = '- LinkedIn Not Found Due To Captcha\n'
-        else:
-            if geturl == ("https://www.linkedin.com/uas/request-password-reset?trk=homepage-basic_signin-form_forgot-password-link"):
-                with open('output.txt', 'w') as f:
-                    data[6] = '- LinkedIn Account Not Found\n'
-            else:
-                with open('output.txt', 'w') as f:
-                    data[6] = '+ LinkedIn Account Found\n'
-    except:
-        with open('output.txt', 'w') as f:
+        linkedintext = driver.find_element("xpath", "//*[contains(text(), 'Couldn’t find a LinkedIn account associated with this email. Please try again.')]")
+        if linkedintext.text == 'Couldn’t find a LinkedIn account associated with this email. Please try again.':
             data[6] = '- LinkedIn Account Not Found\n'
+        else:
+            data[6] = '+ LinkedIn Account Found\n'
+
+    except:
+        data[6] = '+ LinkedIn Account Found\n'
+
+
 LinkedIn()
 with open('output.txt', 'w') as file:
     file.writelines(data)
@@ -285,5 +287,5 @@ with open('output.txt', 'w') as file:
 
 
 
-
+#Snoopin around I see. :) -CK
 
