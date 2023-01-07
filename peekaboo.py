@@ -144,7 +144,7 @@ def LinkedIn():
             data[6] = '+ LinkedIn Account Found\n'
 
     except:
-        data[6] = '+ LinkedIn Account Found\n'
+        data[6] = '- LinkedIn Error\n'
 
 
 LinkedIn()
@@ -275,7 +275,7 @@ def vsco():
             if geturl2 == 'https://vsco.co/user/forgotpassword':
                 data[11] = '- VSCO Account Not Found\n'
             else:
-                data[11] = '- VSCO Account Found\n'
+                data[11] = '+ VSCO Account Found\n'
         except:
             data[11] = '- VSCO Error\n'
 
@@ -283,6 +283,8 @@ def vsco():
 vsco()
 with open('output.txt', 'w') as file:
     file.writelines(data)
+
+
 
 
 

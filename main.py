@@ -19,19 +19,29 @@ with open('output.txt', 'r', encoding='utf-8') as file:
     data = file.readlines()
 
 def button_color():
-    button.configure(text='Running...', fg='green')
+    button.configure(text='Finished', fg='green')
     time.sleep(1)
-    run_script()
+
+def titles():
+    root.wm_title("Peek-A-Boo is running....")
+
+def titles2():
+    root.wm_title("Peek-A-Boo")
+
+
 def run_script():
     global username
     global pin
     global skip2
+    titles()
     username = entry.get()
     pin = pinentry.get()
     skip2 = skipentry.get()
     with open("peekaboo.py", "r") as f:
         script = f.read()
     exec(script)
+    button_color()
+    titles2()
 
     webbrowser.open('output.txt')
 
@@ -66,7 +76,7 @@ skipentry.pack()
 button = tk.Button(frame,
                    text="Found You",
                    fg="black",
-                   command=button_color,)
+                   command=run_script,)
 button.pack(side=tk.RIGHT, padx=150)
 
 image = tk.PhotoImage(file='peekaboo.png')
