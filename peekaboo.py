@@ -135,17 +135,26 @@ def LinkedIn():
     driver.find_element("id", "password").send_keys(password)
     time.sleep(1)
     driver.find_element("xpath", "/html/body/div/main/div[2]/div[1]/form/div[3]/button").click()
+    time.sleep(10)
     time.sleep(2)
     try:
-        linkedintext = driver.find_element("xpath", "//*[contains(text(), 'Couldn’t find a LinkedIn account associated with this email. Please try again.')]")
-        if linkedintext.text == 'Couldn’t find a LinkedIn account associated with this email. Please try again.':
-            data[6] = '- LinkedIn Account Not Found\n'
+        if driver.find_element("id", "home_children_body"):
+            data [6] = '- LinkedIn Failed Due to Captcha\n'
         else:
-            data[6] = '+ LinkedIn Account Found\n'
+            linkedintext = driver.find_element("xpath", "//*[contains(text(), 'Couldn’t find a LinkedIn account associated with this email. Please try again.')]")
+            linkedintext = driver.find_element("xpath", "//*[contains(text(), 'Couldn’t find a LinkedIn account associated with this email. Please try again or create an account.')]")
+            linkedintext = driver.find_element("xpath", "//*[contains(text(), 'Couldn’t find a LinkedIn account associated with this email. Try again or create an account.')]")
+            if linkedintext.text == 'Couldn’t find a LinkedIn account associated with this email. Please try again.':
+                data [6] = '- Linkedin Account Not Found\n'
+            elif linkedintext.text == 'Couldn’t find a LinkedIn account associated with this email. Please try again or create an account.':
+                data [6] = '- Linkedin Account Not Found\n'
+            elif linkedintext.text == 'Couldn’t find a LinkedIn account associated with this email. Try again or create an account.':
+                data [6] = '- Linkedin Account Not Found\n'
+            else:
+                data [6] = '+ Linkedin Account Found\n'
 
     except:
-        data[6] = '+ LinkedIn Account Found\n'
-
+        data [6] = '+ Linkedin Account Found'
 
 LinkedIn()
 with open('output.txt', 'w') as file:
