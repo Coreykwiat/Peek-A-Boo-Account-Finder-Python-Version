@@ -144,7 +144,7 @@ def LinkedIn():
             data[6] = '+ LinkedIn Account Found\n'
 
     except:
-        data[6] = '- LinkedIn Error\n'
+        data[6] = '+ LinkedIn Account Found\n'
 
 
 LinkedIn()

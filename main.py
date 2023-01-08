@@ -20,8 +20,9 @@ with open('output.txt', 'r', encoding='utf-8') as file:
 
 def button_color():
     button.configure(text='Finished', fg='green')
-    time.sleep(1)
 
+def button_color2():
+    button.configure(text='Found You', fg='black')
 def titles():
     root.wm_title("Peek-A-Boo is running....")
 
@@ -42,8 +43,9 @@ def run_script():
     exec(script)
     button_color()
     titles2()
-
     webbrowser.open('output.txt')
+    time.sleep(2)
+    button_color2()
 
 
 
