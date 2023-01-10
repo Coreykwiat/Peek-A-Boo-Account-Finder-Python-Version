@@ -12,7 +12,9 @@ Now with added support to get ending digits of a phone number associated with th
 
 Please use this for legal purposes only. The features of this tool are meant for investigative purposes only
 
-use "pip install requirements.txt" in the directory to install required modules
+Use "pip install requirements.txt" in the directory to install required modules
+Use this link to learn how to install Chrome on Linux https://www.geeksforgeeks.org/how-to-install-google-chrome-on-kali-linux/
+If you are still having issues open main.py with notepad and delete the root.wm_iconbitmap('iseeyou.ico') part of the code.
 
 use "python main.py" to start the program
 
