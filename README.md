@@ -6,7 +6,7 @@
 
 Peek-A-Boo uses Selenium to exploit "Forgot Password" and "Sign Up" on websites to find out if the email has any accounts linked to it.   
 
-Currently supports: Pinterest, TikTok, VSCO, Facebook, Instagram, LinkedIn, Twitter, Roblox, and Snapchat
+Currently supports: Pinterest, TikTok, VSCO, Facebook, Instagram, LinkedIn, Twitter, Roblox, and Snapchat.
 Now with added support to get ending digits of a phone number associated with the Gmail if it is a Gmail account along with associated Emails.
 
 Please use this for legal purposes only. The features of this tool are meant for investigative purposes only
