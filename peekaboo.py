@@ -2,6 +2,7 @@ from selenium import webdriver
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.chrome.service import Service
 from webdrivermanager.chrome import ChromeDriverManager
+import webbrowser
 from selenium.webdriver.chrome.options import Options
 import main
 from main import data
@@ -154,7 +155,7 @@ def LinkedIn():
                 data [6] = '+ Linkedin Account Found\n'
 
     except:
-        data [6] = '+ Linkedin Account Found'
+        data [6] = '+ Linkedin Account Found\n'
 
 LinkedIn()
 with open('output.txt', 'w') as file:
@@ -190,24 +191,24 @@ with open('output.txt', 'w') as file:
 
 
 def twitter():
-    driver.get("https://twitter.com/i/flow/signup")
-    time.sleep(2)
-    driver.find_element("xpath",
-                        "/html/body/div/div/div/div[1]/div[2]/div/div/div/div/div/div[2]/div[2]/div/div/div[2]/div[2]/div/div/div/div[5]/div/span/span").click()
-    time.sleep(2)
-    driver.find_element("xpath",
-                        "/html/body/div/div/div/div[1]/div[2]/div/div/div/div/div/div[2]/div[2]/div/div/div[2]/div[2]/div[1]/div/div[2]/div[3]/span").click()
-    driver.find_element("name", "email").send_keys(username)
-    time.sleep(2)
     try:
-        if driver.find_element("xpath", "/html/body/div/div/div/div[1]/div[2]/div/div/div/div/div/div[2]/div[2]/div/div/div[2]/div[2]/div[1]/div/div[2]/div[2]/div/div/div/div/span"):
-            data[8] = '+ Twitter Account Found\n'
-        else:
+        driver.get("https://twitter.com/i/flow/signup")
+        time.sleep(2)
+        driver.find_element("xpath", "/html/body/div/div/div/div[1]/div[2]/div/div/div/div/div/div[2]/div[2]/div/div/div[2]/div[2]/div/div/div/div[5]/div/span/span").click()
+        time.sleep(2)
+        driver.find_element("xpath", "/html/body/div/div/div/div[1]/div[2]/div/div/div/div/div/div[2]/div[2]/div/div/div[2]/div[2]/div[1]/div/div[2]/div[3]/span").click()
+        driver.find_element("name", "email").send_keys(username)
+        time.sleep(2)
+        try:
+            if driver.find_element("xpath", "/html/body/div/div/div/div[1]/div[2]/div/div/div/div/div/div[2]/div[2]/div/div/div[2]/div[2]/div[1]/div/div[2]/div[2]/div/div/div/div/span"):
+                data[8] = '+ Twitter Account Found\n'
+            else:
+                data[8] = '- Twitter Account Not Found\n'
+
+        except:
             data[8] = '- Twitter Account Not Found\n'
-
     except:
-        data[8] = '- Twitter Account Not Found\n'
-
+        data[8] = '- Error with Twitter\n'
 
 twitter()
 
@@ -292,6 +293,91 @@ def vsco():
 vsco()
 with open('output.txt', 'w') as file:
     file.writelines(data)
+
+
+def phonenumber():
+    if driver.find_element("id", "phoneNumberId"):
+        phonenumbertext = driver.find_element("xpath", "/html/body/div[1]/div[1]/div[2]/div/div[2]/div/div/div[2]/div/div[1]/div/form/span/section/div/div/div[1]/span/span")
+        data[13] = ("This is the last 2 of the phone number: ", phonenumbertext.text, "\n")
+    else:
+        pass
+
+def bluetoothtext():
+    bluetoothtext2 = driver.find_element("xpath", "//*[contains(text(), 'Google will check for a Bluetooth signal to make sure you and your phone are nearby.')]")
+    if bluetoothtext2.text == 'Google will check for a Bluetooth signal to make sure you and your phone are nearby.':
+        driver.find_element("xpath", "/html/body/div[1]/div[1]/div[2]/div/div[2]/div/div/div[2]/div/div[2]/div/div[2]/div/div/button/span")
+    else:
+        pass
+def noinfofound():
+    noinfofound2 = driver.find_element("xpath", "//*[contains(text(), 'You didn’t provide enough info for Google to be sure this account is really yours. Google asks for this info to keep your account secure.')]")
+    if noinfofound2 == 'You didn’t provide enough info for Google to be sure this account is really yours. Google asks for this info to keep your account secure.':
+        data[13] = '- No phone number or account info found\n'
+    else:
+        pass
+def passwordpage():
+    if driver.find_element("name", "Passwd"):
+        driver.find_element("xpath","/html/body/div[1]/div[1]/div[2]/div/c-wiz/div/div[2]/div/div[2]/div/div[2]/div/div/button/span").click()
+        time.sleep(1)
+    else:
+        pass
+def emailtext():
+    emailtext2 = driver.find_element("xpath", "/html/body/div[1]/div[1]/div[2]/div/div[2]/div/div/div[2]/div/div[1]/div/form/span/section/div/div/div[1]/span/span")
+    data[14] = emailtext2.text
+    driver.find_element("xpath", "/html/body/div[1]/div[1]/div[2]/div/div[2]/div/div/div[2]/div/div[2]/div/div[2]/div/div/button/span").click()
+    pass
+
+def gmail():
+    try:
+        bluetoothtext()
+    except:
+        pass
+
+    try:
+        phonenumber()
+    except:
+        pass
+
+    try:
+        noinfofound()
+    except:
+        pass
+
+    try:
+        passwordpage()
+    except:
+        pass
+
+    try:
+        emailtext()
+    except:
+        pass
+
+def name_and_phone():
+    try:
+        driver.get("https://www.google.com/intl/pt/gmail/about/")
+        driver.find_element("xpath", "/html/body/header/div/div/div/a[2]").click()
+        time.sleep(2)
+        driver.find_element("name", "identifier").send_keys(username)
+        driver.find_element("xpath", "/html/body/div[1]/div[1]/div[2]/div/c-wiz/div/div[2]/div/div[2]/div/div[1]/div/div/button/span").click()
+        time.sleep(10)
+        driver.find_element("xpath", "/html/body/div[1]/div[1]/div[2]/div/c-wiz/div/div[2]/div/div[2]/div/div[2]/div/div/button/span").click()
+        time.sleep(10)
+        gmail()
+        gmail()
+        gmail()
+        gmail()
+        gmail()
+    except:
+        data[13] = '- Unable To Find Associated Emails or Phone\n'
+        webbrowser.open("instructions.txt")
+
+name_and_phone()
+with open('output.txt', 'w') as file:
+    file.writelines(data)
+
+
+
+
 
 
 

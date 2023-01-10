@@ -1,0 +1,10 @@
+If you're seeing this it is because gathering the
+last few digits of a phone number and a potentially
+associated email.
+
+If you go to Gmail and go to login as the email
+but instead of entering hit the forget a password
+button. Afterwards it will prompt you with different
+ways of recovering the password. If you cycle through
+these ways of recovering the email it will supply the 
+information you need.
